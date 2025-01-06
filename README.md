@@ -8,6 +8,7 @@
 1. [Download](https://juce.com/) and install the JUCE library and Projucer if you do not already have it.
 2. **Download or Clone** this repository.
 3. Open the JUCE_GRAPHICS_SHOP.jucer file with Projucer.
+4. Build and have fun.
 
 ## License
 This project is licensed under Creative Commons Attribution-NonCommercial 4.0 International.  
