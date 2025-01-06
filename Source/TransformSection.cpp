@@ -11,9 +11,9 @@
 #include "TransformSection.h"
 
 TransformSection::TransformSection(int rowID, ValueTree& masterTree) {
-	ValueTree& componentsTree = masterTree.getChildWithName(COMPONENTS_TREE);
-	ValueTree& componentTree = componentsTree.getChildWithProperty(ID, rowID);
-	ValueTree& transformTree = componentTree.getChildWithName(TRANSFORM_TREE);
+	ValueTree componentsTree = masterTree.getChildWithName(COMPONENTS_TREE);
+	ValueTree componentTree = componentsTree.getChildWithProperty(ID, rowID);
+	ValueTree transformTree = componentTree.getChildWithName(TRANSFORM_TREE);
 
 	//StringArray sliderIDs = StringArray{ X,Y,WIDTH,HEIGHT };
 	Array sliderIDs{ X,Y,WIDTH,HEIGHT };
