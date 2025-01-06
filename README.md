@@ -23,3 +23,6 @@ The licensor cannot revoke these freedoms as long as you follow the license term
 No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
 
 **See the LICENSE.txt file for details.**
+
+## Screenshot
+![image](https://github.com/user-attachments/assets/74f55448-5ed3-4fbe-83ab-849fb42e9698)
