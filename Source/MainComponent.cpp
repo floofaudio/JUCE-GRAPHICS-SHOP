@@ -250,7 +250,7 @@ ValueTree MainComponent::getNewComponentTree(int layerID) {
 	return componentTree;
 }
 
-ValueTree& MainComponent::getComponentTree(int layerID) {
+ValueTree MainComponent::getComponentTree(int layerID) {
 	return m_masterTree.getChildWithName(COMPONENTS_TREE).getChildWithProperty(ID, layerID);
 }
 

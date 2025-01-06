@@ -10,9 +10,9 @@
 
 #include "RectangleController.h"
 RectangleController::RectangleController(int rowID, ValueTree& masterTree) {
-	ValueTree& componentsTree = masterTree.getChildWithName(COMPONENTS_TREE);
-	ValueTree& componentTree = componentsTree.getChildWithProperty(ID, rowID);
-	ValueTree& rectangleTree = componentTree.getChildWithName(RECTANGLE_TREE);
+	ValueTree componentsTree = masterTree.getChildWithName(COMPONENTS_TREE);
+	ValueTree componentTree = componentsTree.getChildWithProperty(ID, rowID);
+	ValueTree rectangleTree = componentTree.getChildWithName(RECTANGLE_TREE);
 
 	addAndMakeVisible(isRoundedToggle);
 

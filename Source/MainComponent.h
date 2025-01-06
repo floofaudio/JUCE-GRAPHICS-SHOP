@@ -37,7 +37,7 @@ private:
     void initMenuBar();
     void initMasterTree();
 	ValueTree getNewComponentTree(int layerID);
-    ValueTree& getComponentTree(int id);
+    ValueTree getComponentTree(int id);
 	void setComponentControllersViewedComponent(int id);
     void deleteComponent(int layerID);
     void setLayerZOrder(Array<int> layerIDs);
