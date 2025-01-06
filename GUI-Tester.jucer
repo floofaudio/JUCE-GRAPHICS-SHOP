@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="XWvUts" name="JUCE GRAPHICS SHOP" projectType="guiapp" useAppConfig="1"
+              addUsingNamespaceToJuceHeader="1" displaySplashScreen="1" jucerFormatVersion="1"
+              version="0.1.0">
+  <MAINGROUP id="dzIu4M" name="JUCE GRAPHICS SHOP">
+    <GROUP id="{3A053A26-0361-9A6E-4A3E-1497419EF8AC}" name="Source">
+      <FILE id="Z5pMTR" name="F64.png" compile="0" resource="1" file="Source/F64.png"/>
+      <FILE id="v0TQEk" name="F128.png" compile="0" resource="1" file="Source/F128.png"/>
+      <FILE id="k9qa1v" name="F32.ico" compile="0" resource="1" file="Source/F32.ico"/>
+      <FILE id="W8Y6Ot" name="F128.ico" compile="0" resource="1" file="Source/F128.ico"/>
+      <FILE id="KqNAoR" name="MainMenuBarModel.cpp" compile="1" resource="0"
+            file="Source/MainMenuBarModel.cpp"/>
+      <FILE id="qMbjvQ" name="RectangleController.cpp" compile="1" resource="0"
+            file="Source/RectangleController.cpp"/>
+      <FILE id="EnLyxN" name="RectangleController.h" compile="0" resource="0"
+            file="Source/RectangleController.h"/>
+      <FILE id="Ewatqc" name="MainMenuBarModel.h" compile="0" resource="0"
+            file="Source/MainMenuBarModel.h"/>
+      <FILE id="ZZHKyR" name="RectangleComponent.h" compile="0" resource="0"
+            file="Source/RectangleComponent.h"/>
+      <FILE id="tgegCi" name="ButtonWithListener.h" compile="0" resource="0"
+            file="Source/ButtonWithListener.h"/>
+      <FILE id="Nyub1S" name="TransformSection.cpp" compile="1" resource="0"
+            file="Source/TransformSection.cpp"/>
+      <FILE id="VGEgMe" name="GradientSection.cpp" compile="1" resource="0"
+            file="Source/GradientSection.cpp"/>
+      <FILE id="ZxTsqy" name="ColourSection.cpp" compile="1" resource="0"
+            file="Source/ColourSection.cpp"/>
+      <FILE id="kCc21g" name="ComponentController.cpp" compile="1" resource="0"
+            file="Source/ComponentController.cpp"/>
+      <FILE id="R6ApgX" name="SliderWithListener.h" compile="0" resource="0"
+            file="Source/SliderWithListener.h"/>
+      <FILE id="TV3npX" name="ColourSection.h" compile="0" resource="0" file="Source/ColourSection.h"/>
+      <FILE id="w083PY" name="GradientSection.h" compile="0" resource="0"
+            file="Source/GradientSection.h"/>
+      <FILE id="MCVNFh" name="TransformSection.h" compile="0" resource="0"
+            file="Source/TransformSection.h"/>
+      <FILE id="OGlAbO" name="Utils.h" compile="0" resource="0" file="Source/Utils.h"/>
+      <FILE id="qm7mfL" name="LayerListBoxModel.h" compile="0" resource="0"
+            file="Source/LayerListBoxModel.h"/>
+      <FILE id="MKS7Sy" name="ComponentController.h" compile="0" resource="0"
+            file="Source/ComponentController.h"/>
+      <FILE id="oFsi7z" name="Layers.h" compile="0" resource="0" file="Source/Layers.h"/>
+      <FILE id="gvVRhP" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="H9QvRA" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="eNOMXf" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/MainComponent.cpp"/>
+    </GROUP>
+  </MAINGROUP>
+  <MODULES>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1"/>
+  <EXPORTFORMATS>
+    <VS2022 targetFolder="Builds/VisualStudio2022" smallIcon="Z5pMTR" bigIcon="v0TQEk">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="JUCE GRAPHICS SHOP"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="JUCE GRAPHICS SHOP"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../../juce-7.0.12-windows/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../juce-7.0.12-windows/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../juce-7.0.12-windows/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../juce-7.0.12-windows/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../juce-7.0.12-windows/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../juce-7.0.12-windows/JUCE/modules"/>
+      </MODULEPATHS>
+    </VS2022>
+  </EXPORTFORMATS>
+</JUCERPROJECT>
