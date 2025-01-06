@@ -65,9 +65,20 @@ namespace constants {
 	const Colour COLOUR_BUTTON_NORMAL = Colours::black.withBrightness(0.3f);
 	const Colour COLOUR_BUTTON_DOWN = Colours::lightblue.withAlpha(0.5f);
 
-	const String LEGAL_INFO = "This application is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0)"
-		"\nThis means: You are free to use, modify, and distribute this application, as long as any modificatio"
-		"ns or derived works are also made available under the AGPL-3.0 license.\n";
+	const String LEGAL_INFO = juce::CharPointer_UTF8("This project is licensed under Creative Commons Attribution-NonCommercial 4.0 International.\n"
+		"\n"
+		"You are free to:\n"
+		"Share \xe2\x80\x94 copy and redistribute the material in any medium or format Adapt \xe2\x80\x94 remix, transform, and bui"
+		"ld upon the material The licensor cannot revoke these freedoms as long as you follow the license ter"
+		"ms.\n"
+		"\n"
+		"Under the following terms:\n"
+		"\n- Attribution \xe2\x80\x94 You must give appropriate credit , provide a link to the license, and indicate if chan"
+		"ges were made . You may do so in any reasonable manner, but not in any way that suggests the licenso"
+		"r endorses you or your use.\n"
+		"\n- NonCommercial \xe2\x80\x94 You may not use the material for commercial purposes . No additional restrictions \xe2\x80\x94 "
+		"You may not apply legal terms or technological measures that legally restrict others from doing anyt"
+		"hing the license permits.");
 }
 
 struct ListItem
