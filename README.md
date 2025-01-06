@@ -5,7 +5,7 @@
 ---
 
 ## Getting Started
-1. Download and install the JUCE library and Projucer if you do not already have it.
+1. [Download](https://juce.com/) and install the JUCE library and Projucer if you do not already have it.
 2. **Download or Clone** this repository.
 3. Open the JUCE_GRAPHICS_SHOP.jucer file with Projucer.
 
