@@ -34,3 +34,9 @@ JuceLibraryCode/
 *.exe
 *.out
 *.app
+
+# CLion config and build products
+.idea/
+cmake-build-debug/
+cmake-build-release/
+
