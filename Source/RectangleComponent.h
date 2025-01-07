@@ -56,19 +56,18 @@ public:
 			gradient = Gradient{ isOn,isStop1Active,isStop2Active, fromX, fromY, stop1Percent,stop2Percent, toX, toY, fromColour, toColour, stop1Colour,stop2Colour };
 		}
 	}
-	~RectangleComponent() {
-
-	}
 
 	void paint(Graphics& g) override{
+		float w = static_cast<float>(getWidth());
+		float h = static_cast<float>(getHeight());
 		if (gradient.isOn) {
 			ColourGradient colourGradient(
 				gradient.fromColour, 
-				gradient.fromX * 0.01f * getWidth(),
-				gradient.fromY * 0.01f * getHeight(),
+				gradient.fromX * 0.01f * w,
+				gradient.fromY * 0.01f * h,
 				gradient.toColour, 
-				gradient.toX*0.01f * getWidth(), 
-				gradient.toY*0.01f*getHeight(), false
+				gradient.toX*0.01f * w, 
+				gradient.toY*0.01f*h, false
 			);
 
 			if (gradient.isStop1Active) {
@@ -79,8 +78,8 @@ public:
 			}
 
 			g.setGradientFill(colourGradient);
-			float cornerSizePercentage = jmin(getWidth(), getHeight()) * cornerSize * 0.01f;
-			g.fillRoundedRectangle(0, 0, getWidth(), getHeight(), cornerSizePercentage);
+			float cornerSizePercentage = jmin(w, h) * cornerSize * 0.01f;
+			g.fillRoundedRectangle(0, 0, w, h, cornerSizePercentage);
 		}
 	}
 
@@ -131,11 +130,7 @@ public:
 
 	void updateGradients() {
 		gradient.fromX = getX() + gradient.fromX * 0.01f * getWidth();
-		DBG("getY: " << String(getY()));
-		DBG("from y before: " << String(gradient.fromY));
-		//gradient.fromY = getY() + (gradient.fromY * 0.01f * getHeight());
 		gradient.fromY = getY() + gradient.fromY;
-		DBG("from y: " << String(gradient.fromY));
 		gradient.toX = getX() + gradient.toX * 0.01f * getWidth();
 		gradient.toY = getY() + gradient.toY * 0.01f * getHeight();
 		repaint();
@@ -197,14 +192,13 @@ public:
 		return code;
 	}
 
-
-
-
 	int getLayerID() {
 		return layerID;
 	}
+
 private: 
 	int layerID = 0;
 	int cornerSize = 0;
 	Gradient gradient;
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(RectangleComponent);
 };

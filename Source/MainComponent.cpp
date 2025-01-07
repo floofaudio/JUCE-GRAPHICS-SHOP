@@ -11,8 +11,7 @@ MainComponent::MainComponent(ValueTree& masterTree) : m_masterTree(masterTree)
 	addAndMakeVisible(layers);
 	
 	m_masterTree.addListener(this);
-	DBG("MainComponent constructor");
-
+	
 	layers.addLayerListener(this);
 	layers.addControlButtonListeners(this);
 	addAndMakeVisible(controllersViewport);
@@ -37,7 +36,7 @@ void MainComponent::resized()
 {
 	auto mainDisplay = Desktop::getInstance().getDisplays().getPrimaryDisplay();
 	auto screenHeight = mainDisplay->totalArea.getHeight();
-	rowHeight = jmin<int>(getHeight() * 0.04f, screenHeight * 0.025f);
+	rowHeight = jmin<int>(static_cast<int>(getHeight() * 0.04f), static_cast<int>(screenHeight * 0.025f));
 
 	auto bounds = getLocalBounds();
 	menuBarComponent.setBounds(bounds.removeFromTop(rowHeight));
@@ -48,9 +47,9 @@ void MainComponent::resized()
 	// set layers bounds
 	layers.setRowHeight(rowHeight);
 	layers.setBounds(sidebarBounds.removeFromTop(rowHeight*6));
-	sidebarBounds.removeFromTop(rowHeight * 0.5f);
+	sidebarBounds.removeFromTop(static_cast<int>(rowHeight * 0.5f));
 	
-	auto viewedComponentBounds = sidebarBounds.withTrimmedRight(sidebarBounds.getWidth() * 0.06f);
+	auto viewedComponentBounds = sidebarBounds.withTrimmedRight(static_cast<int>(sidebarBounds.getWidth() * 0.06f));
 
 	auto* controller = static_cast<ComponentController*>(controllersViewport.getViewedComponent());
 	if (controller) {
@@ -59,10 +58,6 @@ void MainComponent::resized()
 		controllersViewport.getViewedComponent()->setBounds(viewedComponentBounds.withHeight(controller->getRequiredHeight()));
 		controllersViewport.setBounds(sidebarBounds);
 	}
-
-
-
-	
 }
 
 //==============================================================================
@@ -169,7 +164,6 @@ void MainComponent::valueTreePropertyChanged(ValueTree& tree, const Identifier& 
 		auto* component = components[id];
 		var val = tree.getProperty(property);
 
-		int gradientIndex = tree.getProperty(ID);
 		component->setGradientProperties(property, val);
 		component->repaint();
 	}
@@ -264,7 +258,7 @@ ValueTree MainComponent::getNewComponentTree(int layerID) {
 	return componentTree;
 }
 
-ValueTree& MainComponent::getComponentTree(int layerID) {
+ValueTree MainComponent::getComponentTree(int layerID) {
 	return m_masterTree.getChildWithName(COMPONENTS_TREE).getChildWithProperty(ID, layerID);
 }
 
@@ -272,9 +266,6 @@ void MainComponent::saveMasterTreeToFile()
 {
 	if (auto xml = m_masterTree.createXml())
 	{
-		DBG("OK HERE IT IS: ");
-		DBG("XML Content: " << xml->toString());
-
 		auto sharedXml = std::make_shared<juce::XmlElement>(*xml);
 
 		fileChooser = std::make_unique<juce::FileChooser>(
@@ -283,16 +274,12 @@ void MainComponent::saveMasterTreeToFile()
 			"*.xml");
 
 		fileChooser->launchAsync(juce::FileBrowserComponent::saveMode, [this, sharedXml](const juce::FileChooser& chooser) {
-			juce::Logger::writeToLog("FileChooser Callback Invoked");
 			juce::File selectedFile = chooser.getResult();
 
 			if (selectedFile != juce::File{})
 			{
 				if (selectedFile.existsAsFile() || selectedFile.create())
 				{
-					DBG("OK HERE IT IS AGAIN: ");
-					DBG("XML Content: " << sharedXml->toString());
-
 					selectedFile.replaceWithText(sharedXml->toString());
 					juce::AlertWindow::showMessageBoxAsync(
 						juce::AlertWindow::InfoIcon,
@@ -408,7 +395,6 @@ void MainComponent::recreateProjectFromMasterTree() {
 	// add components from loaded file
 	auto componentsTree = m_masterTree.getChildWithName(COMPONENTS_TREE);
 	int nComponents = componentsTree.getNumChildren();
-	DBG("Number of components loaded: " << nComponents);
 	for (int i = 0; i < nComponents; i++) {
 		auto componentTree = componentsTree.getChild(i);
 		int layerID = componentTree.getProperty(ID);
@@ -474,10 +460,7 @@ RectangleComponent* MainComponent::getRectangleComponent(int layerID) {
 void MainComponent::addComponentControllers(int layerID) {
 	auto componentTree = getComponentTree(layerID);
 	auto gradientTree = componentTree.getChildWithName(GRADIENT_TREE);
-	// debug valid trees
-	DBG("\n\nCREATING CONTROLLER FOR LAYER ID: " << layerID);
-	DBG("Component Tree: " << componentTree.toXmlString());
-	DBG("\nGradient Tree: " << gradientTree.toXmlString());
+	
 	auto* newController = new ComponentController(layerID, m_masterTree,gradientTree,ControllerType::RectangleControllerType);
 	controllers.add(newController);
 
@@ -486,7 +469,6 @@ void MainComponent::addComponentControllers(int layerID) {
 }
 
 void MainComponent::setComponentControllersViewedComponent(int layerID) {
-	auto* controller = static_cast<ComponentController*>(controllersViewport.getViewedComponent());
 	controllersViewport.setViewedComponent(controllers[layerID], false);
 	resized();
 }

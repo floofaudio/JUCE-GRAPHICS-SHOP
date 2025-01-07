@@ -7,8 +7,6 @@
     <GROUP id="{3A053A26-0361-9A6E-4A3E-1497419EF8AC}" name="Source">
       <FILE id="Z5pMTR" name="F64.png" compile="0" resource="1" file="Source/F64.png"/>
       <FILE id="v0TQEk" name="F128.png" compile="0" resource="1" file="Source/F128.png"/>
-      <FILE id="k9qa1v" name="F32.ico" compile="0" resource="1" file="Source/F32.ico"/>
-      <FILE id="W8Y6Ot" name="F128.ico" compile="0" resource="1" file="Source/F128.ico"/>
       <FILE id="KqNAoR" name="MainMenuBarModel.cpp" compile="1" resource="0"
             file="Source/MainMenuBarModel.cpp"/>
       <FILE id="qMbjvQ" name="RectangleController.cpp" compile="1" resource="0"
