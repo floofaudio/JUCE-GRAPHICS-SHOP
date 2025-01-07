@@ -20,7 +20,7 @@ using namespace constants;
 
 class ComponentController : public juce::Component {
 public:
-	ComponentController(int rowID, ValueTree& masterTree, ValueTree& gradientTree, ControllerType controllerType);
+	ComponentController(int _layerID, ValueTree& masterTree, ValueTree& gradientTree, ControllerType controllerType);
 	~ComponentController();
 
 	void resized() override;
@@ -29,7 +29,10 @@ public:
 	
 	int getRequiredHeight();
 
+	int getLayerID();
+
 private:
+	int layerID = 0;
 	int rowHeight = 0;
 	ControllerType controllerType = ControllerType::RectangleControllerType;
 	TransformSection transformSection;

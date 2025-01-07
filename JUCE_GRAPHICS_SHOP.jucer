@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="XWvUts" name="JUCE GRAPHICS SHOP" projectType="guiapp" useAppConfig="1"
               addUsingNamespaceToJuceHeader="1" displaySplashScreen="1" jucerFormatVersion="1"
-              version="0.1.0">
+              version="0.1.001">
   <MAINGROUP id="dzIu4M" name="JUCE GRAPHICS SHOP">
     <GROUP id="{3A053A26-0361-9A6E-4A3E-1497419EF8AC}" name="Source">
       <FILE id="Z5pMTR" name="F64.png" compile="0" resource="1" file="Source/F64.png"/>

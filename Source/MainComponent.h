@@ -44,6 +44,7 @@ private:
     void showSelectableWindowWithText(const juce::String& multilineText);
 	void duplicateComponent(int fromLayerID, int toLayerID);
 	void setComponentBoundsFromTransformTree(int layerID);
+	ComponentController& getControllerForLayerID(int layerID);
 
 
 private:

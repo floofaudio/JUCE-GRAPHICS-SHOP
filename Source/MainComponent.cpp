@@ -468,7 +468,10 @@ void MainComponent::addComponentControllers(int layerID) {
 }
 
 void MainComponent::setComponentControllersViewedComponent(int layerID) {
-	controllersViewport.setViewedComponent(controllers[layerID], false);
+	// get controller with layerID
+
+	ComponentController& controller = getControllerForLayerID(layerID);
+	controllersViewport.setViewedComponent(&controller, false);
 	resized();
 }
 
@@ -524,4 +527,13 @@ void MainComponent::setComponentBoundsFromTransformTree(int layerID) {
 
 		getRectangleComponent(layerID)->setBounds(x, y, width, height);;
 	}
+}
+
+ComponentController& MainComponent::getControllerForLayerID(int layerID) {
+	for (auto* controller : controllers) {
+		if (controller->getLayerID() == layerID) {
+			return *controller;
+		}
+	}
+	return *controllers[0];
 }

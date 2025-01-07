@@ -10,7 +10,8 @@
 
 #include "ComponentController.h"
 
-	ComponentController::ComponentController(int rowID, ValueTree& masterTree, ValueTree& gradientTree, ControllerType _controllerType) : transformSection(rowID, masterTree), colourSection(rowID, gradientTree), rectangleController(rowID,masterTree) {
+	ComponentController::ComponentController(int _layerID, ValueTree& masterTree, ValueTree& gradientTree, ControllerType _controllerType) : transformSection(_layerID, masterTree), colourSection(_layerID, gradientTree), rectangleController(_layerID,masterTree) {
+		layerID = _layerID;
 		addAndMakeVisible(transformSection);
 		addAndMakeVisible(colourSection);
 
@@ -54,4 +55,8 @@
 		else {
 			return transformSection.getRequiredHeight() + colourSection.getRequiredHeight() + static_cast<int>(rowHeight*0.5f);
 		}
+	}
+
+	int ComponentController::getLayerID() {
+		return layerID;
 	}

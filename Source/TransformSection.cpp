@@ -28,7 +28,7 @@ TransformSection::TransformSection(int rowID, ValueTree& masterTree) {
 		int val = transformTree.getProperty(sliderIDs[i]);
 
 		auto* slider = new SliderWithListener(transformTree, sliderIDs[i]);
-		slider->setRange(0, 1000, 1);
+		slider->setRange(0, 1500, 1);
 		slider->setValue(val);
 		slider->setComponentID(sliderIDs[i].toString());
 		slider->setSliderStyle(juce::Slider::SliderStyle::LinearHorizontal);
