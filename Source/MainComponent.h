@@ -32,16 +32,18 @@ public:
     void loadMasterTreeFromFile();
     void recreateProjectFromMasterTree();
 	void resetProject();
-    void createComponentFromLoadedTree(int layerID);
+    void createComponentFromTree(int layerID);
 private:
     void initMenuBar();
     void initMasterTree();
 	ValueTree getNewComponentTree(int layerID);
-    ValueTree getComponentTree(int id);
+    ValueTree& getComponentTree(int id);
 	void setComponentControllersViewedComponent(int id);
     void deleteComponent(int layerID);
     void setLayerZOrder(Array<int> layerIDs);
     void showSelectableWindowWithText(const juce::String& multilineText);
+	void duplicateComponent(int fromLayerID, int toLayerID);
+	void setComponentBoundsFromTransformTree(int layerID);
 
 
 private:

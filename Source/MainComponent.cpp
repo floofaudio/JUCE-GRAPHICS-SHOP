@@ -125,6 +125,20 @@ void MainComponent::buttonClicked(Button* button) {
 		if (layerID == -1) return;
 		layers.moveLayerDown(layerID);
 	}
+	else if (button->getComponentID() == DUPLICATE_BUTTON) {
+		int layerID = layers.getLastSelectedLayer();
+		if (layerID == -1) return;
+		int newLayerID = components.size();
+		duplicateComponent(layerID, newLayerID);
+
+		// apply the transform properties to the new component
+		setComponentBoundsFromTransformTree(newLayerID);
+
+		addComponentControllers(newLayerID);
+		layers.addLayer(newLayerID);
+		layers.clickLayer(newLayerID);
+		repaint();
+	}
 	else if (button->getComponentID() == EXPORT_BUTTON) {
 		int layerID = layers.getLastSelectedLayer();
 		if (layerID == -1) return;
@@ -250,7 +264,7 @@ ValueTree MainComponent::getNewComponentTree(int layerID) {
 	return componentTree;
 }
 
-ValueTree MainComponent::getComponentTree(int layerID) {
+ValueTree& MainComponent::getComponentTree(int layerID) {
 	return m_masterTree.getChildWithName(COMPONENTS_TREE).getChildWithProperty(ID, layerID);
 }
 
@@ -398,7 +412,7 @@ void MainComponent::recreateProjectFromMasterTree() {
 	for (int i = 0; i < nComponents; i++) {
 		auto componentTree = componentsTree.getChild(i);
 		int layerID = componentTree.getProperty(ID);
-		createComponentFromLoadedTree(layerID);
+		createComponentFromTree(layerID);
 		addComponentControllers(layerID);
 		layers.addLayer(layerID);
 	}
@@ -420,13 +434,22 @@ void MainComponent::addComponent(int layerID) {
 	addAndMakeVisible(newComponent);
 }
 
-void MainComponent::createComponentFromLoadedTree(int layerID) {
+void MainComponent::createComponentFromTree(int layerID) {
 	auto componentTree = getComponentTree(layerID);
 	auto* newComponent = new RectangleComponent(layerID, componentTree);
 	components.add(newComponent);
 	newComponent->setBounds(0, rowHeight, 100, 100);
 	addAndMakeVisible(newComponent);
 	repaint();
+}
+
+void MainComponent::duplicateComponent(int fromLayerID, int toLayerID) {
+	auto fromComponentTree = getComponentTree(fromLayerID);
+	auto newTree = getNewComponentTree(toLayerID);
+	newTree.copyPropertiesAndChildrenFrom(fromComponentTree, nullptr);
+	newTree.setProperty(ID, toLayerID, nullptr);
+	m_masterTree.getChildWithName(COMPONENTS_TREE).addChild(newTree,-1,nullptr);
+	createComponentFromTree(toLayerID);
 }
 
 void MainComponent::deleteComponent(int layerID) {
@@ -446,9 +469,15 @@ RectangleComponent* MainComponent::getRectangleComponent(int layerID) {
 	return nullptr;
 }
 
+//==============================================================================
+
 void MainComponent::addComponentControllers(int layerID) {
 	auto componentTree = getComponentTree(layerID);
 	auto gradientTree = componentTree.getChildWithName(GRADIENT_TREE);
+	// debug valid trees
+	DBG("\n\nCREATING CONTROLLER FOR LAYER ID: " << layerID);
+	DBG("Component Tree: " << componentTree.toXmlString());
+	DBG("\nGradient Tree: " << gradientTree.toXmlString());
 	auto* newController = new ComponentController(layerID, m_masterTree,gradientTree,ControllerType::RectangleControllerType);
 	controllers.add(newController);
 
@@ -499,4 +528,19 @@ void MainComponent::showSelectableWindowWithText(const juce::String& multilineTe
 
 	// Create the window dynamically
 	new SelectableTextWindow("CODE", multilineText);
+}
+
+void MainComponent::setComponentBoundsFromTransformTree(int layerID) {
+	auto transformTree = getComponentTree(layerID).getChildWithName(TRANSFORM_TREE);
+
+	if (transformTree.isValid())
+	{
+		int x = transformTree.getProperty("X", 0);
+		int y = transformTree.getProperty("Y", 0);
+		y += rowHeight; // adjust for menu bar on tops
+		int width = transformTree.getProperty("WIDTH", 100);
+		int height = transformTree.getProperty("HEIGHT", 100);
+
+		getRectangleComponent(layerID)->setBounds(x, y, width, height);;
+	}
 }

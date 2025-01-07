@@ -33,7 +33,6 @@ public:
 	void removeLayer(int layerID) {
 		layersListBoxModel.removeItem(layerID);
 		layersListBox.updateContent();
-
 	}
 
 	void removeAllLayers() {
@@ -116,6 +115,10 @@ public:
 		moveDownButton.setComponentID(MOVE_COMPONENT_DOWN_BUTTON);
 		addAndMakeVisible(moveDownButton);
 
+		duplicateButton.setButtonText("Dupl");
+		duplicateButton.setComponentID(DUPLICATE_BUTTON);
+		addAndMakeVisible(duplicateButton);
+
 		exportButton.setButtonText("Code");
 		exportButton.setComponentID("EXPORT_BUTTON");
 		addAndMakeVisible(exportButton);
@@ -137,11 +140,12 @@ public:
 		header.setBounds(headerBounds);
 
 		auto toolBarBounds = bounds.removeFromBottom(rowHeight);
-		int btnWidth = toolBarBounds.getWidth() / 6;
+		int btnWidth = toolBarBounds.getWidth() / 6.0f;
 		addComponentButton.setBounds(toolBarBounds.removeFromLeft(btnWidth));
 		deleteComponentButton.setBounds(toolBarBounds.removeFromLeft(btnWidth));
 		moveUpButton.setBounds(toolBarBounds.removeFromLeft(btnWidth));
 		moveDownButton.setBounds(toolBarBounds.removeFromLeft(btnWidth));
+		duplicateButton.setBounds(toolBarBounds.removeFromLeft(btnWidth));
 		exportButton.setBounds(toolBarBounds);
 		layersViewPort.setBounds(bounds);
 		
@@ -203,6 +207,7 @@ public:
 		moveUpButton.addListener(listener);
 		moveDownButton.addListener(listener);
 		exportButton.addListener(listener);
+		duplicateButton.addListener(listener);
 	}
 
 	void removeControlButtonListeners(Button::Listener* listener) {
@@ -211,6 +216,7 @@ public:
 		moveUpButton.removeListener(listener);
 		moveDownButton.removeListener(listener);
 		exportButton.removeListener(listener);
+		duplicateButton.removeListener(listener);
 	}
 
 	void moveLayerUp(int layerID) {
@@ -233,6 +239,7 @@ private:
 	TextButton deleteComponentButton;
 	TextButton moveUpButton;
 	TextButton moveDownButton;
+	TextButton duplicateButton;
 	TextButton exportButton;
 	Viewport layersViewPort;
 	LayersViewedComponent layersViewedComponent;
