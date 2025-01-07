@@ -75,22 +75,23 @@ void GradientSection::paint(juce::Graphics& g) {
 
 void GradientSection::resized()  {
 	auto bounds = getLocalBounds();
-	int labelWidth = getWidth() * 0.2f;
+	int labelWidth = static_cast<int>(getWidth() * 0.2f);
+	int halfLabelWidth = static_cast<int>(labelWidth / 2.0f);
 	auto headerBounds = bounds.removeFromTop(rowHeight);
-	isOnButton.setBounds(headerBounds.removeFromLeft(labelWidth/2.0f));
+	isOnButton.setBounds(headerBounds.removeFromLeft(halfLabelWidth));
 	header.setBounds(headerBounds.removeFromLeft(proportionOfWidth(0.5f)));
 
 	for (int i = 0; i < sliders.size(); ++i) {
 		auto rowBounds = bounds.removeFromTop(rowHeight);
 
 		if (sliders[i]->getComponentID() == STOP1_PERCENT.toString()) {
-			activeStopButtons[0]->setBounds(rowBounds.removeFromRight(labelWidth / 2.0f));
+			activeStopButtons[0]->setBounds(rowBounds.removeFromRight(halfLabelWidth));
 		}
 		else if (sliders[i]->getComponentID() == STOP2_PERCENT.toString()) {
-			activeStopButtons[1]->setBounds(rowBounds.removeFromRight(labelWidth / 2.0f));
+			activeStopButtons[1]->setBounds(rowBounds.removeFromRight(halfLabelWidth));
 		}
 		else {
-			rowBounds.removeFromRight(labelWidth / 2.0f);
+			rowBounds.removeFromRight(halfLabelWidth);
 		}
 
 		sliderLabels[i]->setBounds(rowBounds.removeFromLeft(labelWidth));

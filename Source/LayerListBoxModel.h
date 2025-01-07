@@ -46,7 +46,7 @@ public:
     }
 
     // Handle row selection
-    void listBoxItemClicked(int row, const juce::MouseEvent& event) override
+    void listBoxItemClicked(int row, const juce::MouseEvent&) override
     {
         // get item
 		lastSelectedRow = items[row].id;
@@ -107,15 +107,6 @@ public:
                 break;
             }
         }
-
-        // liten debug
-        DBG("Current List Items:");
-        for (int i = 0; i < items.size(); ++i)
-        {
-            DBG("Item " << juce::String(i) << ": ID = " << juce::String(items[i].id) <<
-                ", Name = " << items[i].text);
-        }
-
         return false;
         
     }

@@ -19,7 +19,7 @@ public:
     {
         //setVelocityBasedMode(true);
         setSliderSnapsToMousePosition(false);
-        setVelocityModeParameters(0.9,0.1, 0.0,true,ModifierKeys::shiftModifier);
+        setVelocityModeParameters(0.9,1, 0.0,true,ModifierKeys::shiftModifier);
         addListener(this);
     }
 

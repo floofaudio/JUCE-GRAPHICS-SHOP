@@ -46,14 +46,15 @@ void TransformSection::paint(juce::Graphics& g) {
 }
 
 void TransformSection::resized() {
+	float w = static_cast<float>(getWidth());
 	auto bounds = getLocalBounds();
 	header.setBounds(bounds.removeFromTop(rowHeight));
 	int y = bounds.getY();
-	int labelWidth = getWidth() * 0.2f;
+	int labelWidth = static_cast<int>(w * 0.2f);
 	for (int i = 0; i < sliders.size(); ++i) {
 		sliderLabels[i]->setBounds(0, y, labelWidth, rowHeight);
-		sliders[i]->setBounds(labelWidth, y, getWidth() - labelWidth, rowHeight);
-		sliders[i]->setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxRight, false, sliders[i]->getWidth() * 0.2f, rowHeight);
+		sliders[i]->setBounds(labelWidth, y, static_cast<int>(w - labelWidth), rowHeight);
+		sliders[i]->setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxRight, false, static_cast<int>(sliders[i]->getWidth() * 0.2f), rowHeight);
 		y += rowHeight /*+ 10*/;
 	}
 }

@@ -140,7 +140,7 @@ public:
 		header.setBounds(headerBounds);
 
 		auto toolBarBounds = bounds.removeFromBottom(rowHeight);
-		int btnWidth = toolBarBounds.getWidth() / 6.0f;
+		int btnWidth = static_cast<int>(toolBarBounds.getWidth() / 6.0f);
 		addComponentButton.setBounds(toolBarBounds.removeFromLeft(btnWidth));
 		deleteComponentButton.setBounds(toolBarBounds.removeFromLeft(btnWidth));
 		moveUpButton.setBounds(toolBarBounds.removeFromLeft(btnWidth));

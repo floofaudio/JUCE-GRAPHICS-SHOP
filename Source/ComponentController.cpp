@@ -29,10 +29,10 @@
 		if (controllerType == RectangleControllerType)
 		{
 			rectangleController.setBounds(bounds.removeFromTop(rectangleController.getRequiredHeight()));
-			bounds.removeFromTop(transformSection.getRowHeight() * 0.5f);
+			bounds.removeFromTop(static_cast<int>(transformSection.getRowHeight() * 0.5f));
 		}
 		transformSection.setBounds(bounds.removeFromTop(transformSection.getRequiredHeight()));
-		bounds.removeFromTop(transformSection.getRowHeight()*0.5f);
+		bounds.removeFromTop(static_cast<int>(transformSection.getRowHeight()*0.5f));
 		colourSection.setBounds(bounds.removeFromTop(jmin<int>(colourSection.getRequiredHeight(),bounds.getHeight())));
 	}
 
@@ -52,6 +52,6 @@
 			return transformSection.getRequiredHeight() + colourSection.getRequiredHeight() + rectangleController.getRequiredHeight() + rowHeight;
 		}
 		else {
-			return transformSection.getRequiredHeight() + colourSection.getRequiredHeight() + rowHeight*0.5f;
+			return transformSection.getRequiredHeight() + colourSection.getRequiredHeight() + static_cast<int>(rowHeight*0.5f);
 		}
 	}
