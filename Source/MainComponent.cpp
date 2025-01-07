@@ -243,7 +243,6 @@ ValueTree MainComponent::getNewComponentTree(int layerID) {
 	ValueTree transformTree(
 		TRANSFORM_TREE,
 		{
-			{ID, 0},
 			{X, 0},
 			{Y, 0},
 			{WIDTH, 100},

@@ -50,8 +50,8 @@ public:
     {
         // get item
 		lastSelectedRow = items[row].id;
-		sendActionMessage(CLICKED_LAYER + juce::String(row));
-        juce::Logger::outputDebugString("Clicked on row with id" + juce::String(items[row].id));
+		sendActionMessage(CLICKED_LAYER + juce::String(lastSelectedRow));
+        juce::Logger::outputDebugString("Clicked on row with id" + juce::String(lastSelectedRow));
     }
 
     void addItem(ListItem newItem)
