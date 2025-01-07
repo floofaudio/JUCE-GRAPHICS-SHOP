@@ -16,7 +16,6 @@ GradientSection::GradientSection(int rowID, ValueTree gradientTree) : m_gradient
 	isOnButton.setToggleState(gradientTree.getProperty(IS_ON),dontSendNotification);
 
 	Array sliderIDs{ FROM_X,FROM_Y,STOP1_PERCENT,STOP2_PERCENT,TO_X,TO_Y };
-	DBG("\nADD GRADIENT SECTION");
 	Array<float> rangeEnds{ 100.0f,100.0f,100.0f,100.0f,500.0f,500.0f};
 	for (int i = 0; i < sliderIDs.size(); i++) {
 		// add labels
@@ -44,7 +43,7 @@ GradientSection::GradientSection(int rowID, ValueTree gradientTree) : m_gradient
 	StringArray colourSelectorNames{ "From", "Stop 1", "Stop 2","To"};
 	Array<Identifier> csIDs{FROM_COLOUR,STOP1_COLOUR,STOP2_COLOUR,TO_COLOUR};
 	for (int i = 0; i < 4; i++) {
-		ColourSelector* cs = new ColourSelector();
+		ColourSelector* cs = new ColourSelector(ColourSelector::editableColour | ColourSelector::showColourAtTop | ColourSelector::showSliders | ColourSelector::showColourspace | ColourSelector::showAlphaChannel);
 		cs->setColour(ColourSelector::ColourIds::backgroundColourId, GREY1);
 		cs->setComponentID(csIDs[i].toString());
 		colourSelectors.add(std::move(cs));
