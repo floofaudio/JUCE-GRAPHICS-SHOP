@@ -78,8 +78,7 @@ public:
 			}
 
 			g.setGradientFill(colourGradient);
-			float cornerSizePercentage = jmin(w, h) * cornerSize * 0.01f;
-			g.fillRoundedRectangle(0, 0, w, h, cornerSizePercentage);
+			g.fillRoundedRectangle(0, 0, w, h, cornerSize);
 		}
 	}
 
@@ -183,8 +182,7 @@ public:
 
 		// Set the gradient fill and draw the rounded rectangle
 		code << "    g.setGradientFill(colourGradient);\n";
-		code << "    float cornerSizePercentage = jmin(getWidth(), getHeight()) * cornerSize * 0.01f;\n";
-		code << "    g.fillRoundedRectangle(0, 0, getWidth(), getHeight(), cornerSizePercentage);\n";
+		code << "    g.fillRoundedRectangle(0, 0, getWidth(), getHeight(), cornerSize);\n";
 
 		// Close the method
 		code << "}\n";
